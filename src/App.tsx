@@ -58,28 +58,28 @@ const App = () => {
   }
 
   return (
-    <main className="h-screen flex justify-center items-center bg-[url(/bg.svg)]">
+    <main className="h-screen flex justify-center items-center bg-[url(/bg.svg)] text-lg md:text-xl">
       <div className="w-10/12 max-w-md md:max-w-2xl mx-auto bg-transparent border-4 border-green-600 rounded-2xl backdrop-blur-sm px-8 md:px-20 py-8 md:py-20">
         <div className="">
-          <h1 className="text-2xl md:text-4xl font-bold text-center text-green-600">TypeScript To-Do App</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-center text-orange-800">TypeScript To-Do App</h1>
 
           <div>
-            <form onSubmit={handleAppTodo} className="flex justify-between mt-4">
+            <form onSubmit={handleAppTodo} className="flex justify-between mt-8">
               <input
                 type="text"
                 value={newTodo}
                 onChange={e => setNewTodo(e.target.value)}
-                className="w-full mr-2 px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none"
                 placeholder="Add a new todo..."
               />
               <button
                 type="submit"
                 disabled={!newTodo.trim()}
-                className="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-orange-400 transition-colors"
+                className="px-4 py-2 mx-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-orange-400 transition-colors"
               >Add</button>
             </form>
 
-            <div className="w-full mt-4 md:mt-8 h-80 overflow-y-auto">
+            <div className="w-full mt-4 md:mt-8 max-h-[60vh] overflow-y-auto">
               {todos.length === 0 ? (
                 <img src="/empty.svg" alt="" className="w-full select-none" />
               ) : (
@@ -99,12 +99,12 @@ const App = () => {
                           />
                           <button
                             type="submit"
-                            className="px-2 py-1 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                            className="px-2 py-1 mx-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
                           >Update</button>
                           <button
                             type="button"
                             onClick={handleEditCancel}
-                            className="px-2 py-1 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                            className="px-2 py-1 mx-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
                           >Cancel</button>
                         </form>
                       ) : (
@@ -114,9 +114,9 @@ const App = () => {
                               type="checkbox"
                               checked={todo.status}
                               onChange={() => handleToggleStatus(todo.id)}
-                              className="size-5 border-2 border-green-600 rounded checked:bg-orange-400 checked:border-transparent focus:outline-none"
+                              className="size-5 border-2 border-green-600 rounded checked:bg-orange-400 checked:border-transparent focus:outline-none cursor-pointer mr-4"
                             />
-                            <span className={`${todo.status ? "line-through text-gray-500" : "text-gray-800"}`}>
+                            <span className={`font-semibold ${todo.status ? "line-through text-gray-500" : "text-gray-800"}`}>
                               {todo.content}
                             </span>
                           </label>
@@ -124,12 +124,12 @@ const App = () => {
                             <button
                               type="button"
                               onClick={() => handleEdit(todo)}
-                              className="px-2 py-1 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                              className="px-2 py-1 mx-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
                             >Edit</button>
                             <button
                               type="button"
                               onClick={() => handleDelete(todo.id)}
-                              className="px-2 py-1 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                              className="px-2 py-1 mx-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
                             >Delete</button>
                           </div>
                         </>
