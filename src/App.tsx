@@ -79,7 +79,7 @@ const App = () => {
               >Add</button>
             </form>
 
-            <div className="w-full mt-4 md:mt-8 max-h-[60vh] overflow-y-auto">
+            <div className="w-full mt-4 md:mt-8 h-80 max-h-[60vh] overflow-y-auto">
               {todos.length === 0 ? (
                 <img src="/empty.svg" alt="" className="w-full select-none" />
               ) : (
@@ -99,12 +99,12 @@ const App = () => {
                           />
                           <button
                             type="submit"
-                            className="px-2 py-1 mx-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
+                            className="green-btn"
                           >Update</button>
                           <button
                             type="button"
                             onClick={handleEditCancel}
-                            className="px-2 py-1 mx-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
+                            className="red-btn"
                           >Cancel</button>
                         </form>
                       ) : (
@@ -124,12 +124,12 @@ const App = () => {
                             <button
                               type="button"
                               onClick={() => handleEdit(todo)}
-                              className="px-2 py-1 mx-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
+                              className="green-btn"
                             >Edit</button>
                             <button
                               type="button"
                               onClick={() => handleDelete(todo.id)}
-                              className="px-2 py-1 mx-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none"
+                              className="red-btn"
                             >Delete</button>
                           </div>
                         </>

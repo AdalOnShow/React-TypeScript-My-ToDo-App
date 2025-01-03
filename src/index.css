@@ -5,3 +5,11 @@
 .flex-center {
   @apply flex items-center justify-center;
 }
+
+.green-btn {
+  @apply px-2 py-1 mx-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none;
+}
+
+.red-btn {
+  @apply px-2 py-1 mx-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors select-none;
+}
