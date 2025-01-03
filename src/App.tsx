@@ -18,7 +18,7 @@ const App = () => {
     if (!trimmedValue) return
 
     setTodos([...todos, { id: Date.now(), content: trimmedValue, status: false }])
-    
+
     setNewTodo("")
   }
 
@@ -26,6 +26,11 @@ const App = () => {
     setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, status: !todo.status } : todo
     ))
+  }
+
+  const handleEdit = (todo: Todo) => {
+    setEditingId(todo.id)
+    setEditingContent(todo.content)
   }
 
   return (
