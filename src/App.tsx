@@ -33,6 +33,19 @@ const App = () => {
     setEditingContent(todo.content)
   }
 
+  const handleUpdate = (id: number, e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const trimmedValue = editingContent.trim()
+    if (!trimmedValue) return
+
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, content: trimmedValue } : todo
+    ))
+    setEditingId(null)
+    setEditingContent("")
+  }
+
   return (
     <main className="h-screen flex justify-center items-center bg-[url(/bg.svg)]">
       <div className="w-10/12 max-w-md md:max-w-2xl mx-auto bg-transparent border-4 border-green-600 rounded-2xl backdrop-blur-sm px-8 md:px-20 py-8 md:py-20">
