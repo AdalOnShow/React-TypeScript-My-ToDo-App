@@ -58,11 +58,10 @@ const App = () => {
   }
 
   return (
-    <main className="h-screen flex justify-center items-center bg-[url(/bg.svg)] text-lg md:text-xl">
-      <div className="w-10/12 max-w-md md:max-w-2xl mx-auto bg-transparent border-4 border-green-600 rounded-2xl backdrop-blur-sm px-8 md:px-20 py-8 md:py-20">
+    <main className="h-screen flex justify-center items-center bg-[url(/bg.svg)] text-sm md:text-lg lg:text-xl">
+      <div className="w-10/12 max-w-md md:max-w-2xl mx-auto bg-transparent border-4 border-green-600 rounded-2xl backdrop-blur-sm px-6 md:px-20 py-8 md:py-20">
         <div className="">
-          <h1 className="text-2xl md:text-4xl font-bold text-center text-orange-800">TypeScript To-Do App</h1>
-
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-center text-orange-800">TypeScript To-Do App</h1>
           <div>
             <form onSubmit={handleAppTodo} className="flex justify-between mt-8">
               <input
@@ -114,9 +113,9 @@ const App = () => {
                               type="checkbox"
                               checked={todo.status}
                               onChange={() => handleToggleStatus(todo.id)}
-                              className="size-5 border-2 border-green-600 rounded checked:bg-orange-400 checked:border-transparent focus:outline-none cursor-pointer mr-4"
+                              className="size-5 border-2 border-green-600 rounded checked:bg-orange-400 checked:border-transparent focus:outline-none cursor-pointer md:mr-4"
                             />
-                            <span className={`font-semibold ${todo.status ? "line-through text-gray-500" : "text-gray-800"}`}>
+                            <span className={`font-semibold text-wrap overflow-x-hidden ${todo.status ? "line-through text-gray-500" : "text-gray-800"}`}>
                               {todo.content}
                             </span>
                           </label>
