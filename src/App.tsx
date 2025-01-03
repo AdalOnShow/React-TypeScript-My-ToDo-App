@@ -1,4 +1,16 @@
+interface Todo {
+  id: number
+  content: string
+  status: boolean
+}
+
 const App = () => {
+
+  const [todos, setTodos] = useState<Todo[]>([])
+  const [newTodo, setNewTodo] = useState("")
+  const [editingId, setEditingId] = useState<number | null>(null)
+  const [editingContent, setEditingContent] = useState("")
+
   return (
     <main className="h-screen flex justify-center items-center bg-[url(/bg.svg)]">
       <div className="w-10/12 max-w-md md:max-w-2xl mx-auto bg-transparent border-4 border-green-600 rounded-2xl backdrop-blur-sm px-8 md:px-20 py-8 md:py-20">
