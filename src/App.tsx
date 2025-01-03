@@ -109,10 +109,17 @@ const App = () => {
                         </form>
                       ) : (
                         <>
-                          <p
-                            className={`flex-1 ${todo.status ? "line-through" : ""}`}
-                            onClick={() => handleToggleStatus(todo.id)}
-                          >{todo.content}</p>
+                          <label className="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              checked={todo.status}
+                              onChange={() => handleToggleStatus(todo.id)}
+                              className="size-5 border-2 border-green-600 rounded checked:bg-orange-400 checked:border-transparent focus:outline-none"
+                            />
+                            <span className={`${todo.status ? "line-through text-gray-500" : "text-gray-800"}`}>
+                              {todo.content}
+                            </span>
+                          </label>
                           <div>
                             <button
                               type="button"
