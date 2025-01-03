@@ -18,7 +18,14 @@ const App = () => {
     if (!trimmedValue) return
 
     setTodos([...todos, { id: Date.now(), content: trimmedValue, status: false }])
+    
     setNewTodo("")
+  }
+
+  const handleToggleStatus = (id: number) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, status: !todo.status } : todo
+    ))
   }
 
   return (
