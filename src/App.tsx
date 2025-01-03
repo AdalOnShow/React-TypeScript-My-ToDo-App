@@ -65,9 +65,73 @@ const App = () => {
 
           <div>
             <form onSubmit={handleAppTodo} className="flex justify-between mt-4">
-              <input type="text" value={newTodo} onChange={e => setNewTodo(e.target.value)} className="w-full mr-2 px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none" placeholder="Add a new todo..." />
-              <button type="submit" className="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500">Add</button>
+              <input
+                type="text"
+                value={newTodo}
+                onChange={e => setNewTodo(e.target.value)}
+                className="w-full mr-2 px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none"
+                placeholder="Add a new todo..."
+              />
+              <button
+                type="submit"
+                disabled={!newTodo.trim()}
+                className="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-orange-400 transition-colors"
+              >Add</button>
             </form>
+
+            <div className="w-full mt-4 md:mt-8 h-80 overflow-y-auto">
+              {todos.length === 0 ? (
+                <img src="/empty.svg" alt="" className="w-full select-none" />
+              ) : (
+                <ul className="space-y-2 mt-4">
+                  {todos.map(todo => (
+                    <li
+                      key={todo.id}
+                      className="flex justify-between items-center px-4 py-2 bg-green-100 rounded-lg"
+                    >
+                      {editingId === todo.id ? (
+                        <form onSubmit={e => handleUpdate(todo.id, e)} className="flex w-full">
+                          <input
+                            type="text"
+                            value={editingContent}
+                            onChange={e => setEditingContent(e.target.value)}
+                            className="w-full px-2 py-1 border-2 border-green-600 rounded-lg focus:outline-none"
+                          />
+                          <button
+                            type="submit"
+                            className="px-2 py-1 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                          >Update</button>
+                          <button
+                            type="button"
+                            onClick={handleEditCancel}
+                            className="px-2 py-1 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                          >Cancel</button>
+                        </form>
+                      ) : (
+                        <>
+                          <p
+                            className={`flex-1 ${todo.status ? "line-through" : ""}`}
+                            onClick={() => handleToggleStatus(todo.id)}
+                          >{todo.content}</p>
+                          <div>
+                            <button
+                              type="button"
+                              onClick={() => handleEdit(todo)}
+                              className="px-2 py-1 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                            >Edit</button>
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(todo.id)}
+                              className="px-2 py-1 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors"
+                            >Delete</button>
+                          </div>
+                        </>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </div>
